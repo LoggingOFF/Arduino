@@ -63,25 +63,28 @@ void loop() {
       movDir += 1;
       if(movDir > 4) {
         movDir = 1;
-        }
-      if(movDir == 1) {
-        digitalWrite(XmovPin, HIGH);
-        Serial.println("moving X positive");
       }
-      else if(movDir == 2){
-        digitalWrite(YmovPin, HIGH);
-        Serial.println("moving Y positive");
+      switch(movDIr){
+        case(1):
+          digitalWrite(XmovPin, HIGH);
+          Serial.println("moving X positive");
+          break;
+        case(2):
+          digitalWrite(YmovPin, HIGH);
+          Serial.println("moving Y positive");
+          break;
+        case(3):
+          digitalWrite(XmovPin, HIGH);
+          digitalWrite(XmovPinreverse, HIGH);
+          Serial.println("moving X negative");
+          break;
+        case(4):
+          digitalWrite(YmovPin, HIGH);
+          digitalWrite(YmovPinreverse, HIGH);
+          Serial.println("moving Y negative");
+          break;
       }
-      else if(movDir == 3){
-        digitalWrite(XmovPin, HIGH);
-        digitalWrite(XmovPinreverse, HIGH);
-        Serial.println("moving X negative");
-      }
-      else if(movDir == 4){
-        digitalWrite(YmovPin, HIGH);
-        digitalWrite(YmovPinreverse, HIGH);
-        Serial.println("moving Y negative");
-      }
+
       delay(500);
       digitalWrite(XmovPin, LOW);
       digitalWrite(YmovPin, LOW);
